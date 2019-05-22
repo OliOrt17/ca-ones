@@ -4,9 +4,16 @@
     if(isset($_POST["accion"])){
 	    switch ($_POST["accion"]) {
             case 'insertar_usuarios':
-            insertar_usuarios();
+                insertar_usuarios();
+            break;
+            case 'consultar_usuarios':
+                consultar_usuarios($_POST["id"]);
+            break;
+            case 'eliminar_usuarios':
+                eliminar_usuarios($_POST["id"]);
             break;
         }
+            
     }
 
     function insertar_usuarios(){
@@ -30,6 +37,23 @@
         }else{
             echo "Se ocasiono un error";
 	    }
+    }
+
+    function consultar_usuarios($id){
+        global $db;
+         $consultar = $db -> get("usuarios","*",["AND" => ["usr_status"=>1, "usr_id"=>$id]]);
+        echo json_encode($consultar);
+
+    }
+
+    function eliminar_usuarios($id){
+        global $db;
+        $eliminar = $db->delete("usuarios",["usr_id" => $id]);
+        if($eliminar){
+            echo "Registro eliminado";
+        }else{
+            echo "registro eliminado";
+        }
     }
 ?>
 

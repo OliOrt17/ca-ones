@@ -106,5 +106,25 @@ $(document).ready(function(){
         })
         $("#modalusuario"),modal("hide");
     });*/
+
+    //eliminar
+    $(document).on("click", ".eliminar_usuarios", function(){
+        id=$(this).data("id");
+        $.ajax({
+            url: "./includes/_funciones.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                accion: "eliminar_usuarios",
+                id: id
+            },
+            success: function(data){
+                console.log(data);
+            }
+        })
+        location.reload();
+    });
+
+   
     
 });

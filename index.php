@@ -81,10 +81,10 @@ require_once 'includes/_funciones.php';
                                         <td><?php echo $usr["cps_campus"]; ?></td>
                                         <td><?php echo $usr["tyu_nombre"]; ?></td>
                                         <td>
-                                            <a href="#" class="editar_usuarios"><i class="fas fa-edit"></i></a>
+                                            <a href="#" class="editar_usuarios" data-id="<?php echo $usr["usr_id"]; ?>"><i class="fas fa-edit"></i></a>
                                         </td>
                                         <td>
-                                            <a href="#" class="eliminar_usuarios"><i class="fas fa-trash"></i></a>
+                                            <a href="#" class="eliminar_usuarios" data-id="<?php echo $usr["usr_id"]; ?>"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                             <?php
