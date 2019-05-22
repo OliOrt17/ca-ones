@@ -111,20 +111,16 @@ require_once 'includes/_funciones.php';
         <form id="formulario" action="">    
             <div class="modal-body">
                 <div class="form-group">
-                <label for="matricula" class="col-form-label">Matricula:</label>
-                <input type="number" class="form-control" id="matricula">
+                <input type="number" class="form-control" id="matricula"  placeholder="Matricula">
                 </div>
                 <div class="form-group">
-                <label for="nombre" class="col-form-label">Nombre:</label>
-                <input type="text" class="form-control" id="nombre">
+                <input type="text" class="form-control" id="nombre"  placeholder="Nombre">
                 </div>               
                 <div class="form-group">
-                <label for="paterno" class="col-form-label">Apellido paterno:</label>
-                <input type="text" class="form-control" id="paterno">
+                <input type="text" class="form-control" id="paterno" placeholder="Apellido paterno">
                 </div>    
                 <div class="form-group">
-                <label for="materno" class="col-form-label">Apellido materno:</label>
-                <input type="text" class="form-control" id="materno">
+                <input type="text" class="form-control" id="materno"  placeholder="Apellido materno:">
                 </div> 
                 <div class="form-group">
                    <select id="lista">
@@ -140,16 +136,13 @@ require_once 'includes/_funciones.php';
                    </select>
                 </div>  
                 <div class="form-group">
-                <label for="correo" class="col-form-label">Email:</label>
-                <input type="email" class="form-control" id="correo">
+                <input type="email" class="form-control" id="correo" placeholder="Email">
                 </div>  
                 <div class="form-group">
-                <label for="pass" class="col-form-label">Contraseña:</label>
-                <input type="text" class="form-control" id="pass">
+                <input type="password" class="form-control" id="pass" placeholder="Contraseña">
                 </div>
                 <div class="form-group">
-                <label for="tel" class="col-form-label">Telefono:</label>
-                <input type="number" class="form-control" id="tel">
+                <input type="number" class="form-control" id="tel" placeholder="Telefono">
                 </div>    
                 <div class="form-group">
                    <select id="tipo">
@@ -165,8 +158,7 @@ require_once 'includes/_funciones.php';
                    </select>
                 </div>  
                 <div class="form-group">
-                <label for="nivel" class="col-form-label">Nivel Educativo:</label>
-                <input type="text" class="form-control" id="nivel">
+                <input type="text" class="form-control" id="nivel" placeholder="Nivel educativo">
                 </div>  
                 
 

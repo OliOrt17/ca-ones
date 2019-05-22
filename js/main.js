@@ -125,6 +125,36 @@ $(document).ready(function(){
         location.reload();
     });
 
-   
+    //Editar
+    $(document).on("click", ".editar_usuarios", function(){
+        id=$(this).data("id");
+        
+        obj={
+            "accion" : "consultar_usuarios",
+            "id" : $(this).data("id")
+        }
+        $.post("./includes/_funciones.php", obj, function(data){
+            $("#matricula").val(data.usr_id);
+            $("#nombre").val(data.usr_nombre);
+            $("#paterno").val(data.usr_appat);
+            $("#materno").val(data.usr_apmat);
+            $("#lista").val(data.cps_id);
+            $("#correo").val(data.usr_email);
+            $("#tel").val(data.usr_tel);
+            $("#tipo").val(data.tyu_id);
+            $("#nivel").val(data.usr_nivel);
+            $("#pass").val(data.usr_password);
+            
+        }, "JSON");
+        
+       
+        $(".modal-header").css("background-color", "#007bff");
+        $(".modal-header").css("color", "white");
+        $(".modal-title").text("Editar Usuarios"); 
+        $("#btnGuardar").text("Actualizar");  
+        $("#modalusuario").modal("show");  
+
+        
+    });
     
 });
