@@ -31,7 +31,7 @@ $(document).ready(function(){
     });
     //Obtener los parametros
     $("#btnGuardar").click(function(){
-        console.log("en formulario")
+        console.log($(this).data("edicion"));
         ///e.preventDefault();
         mac=$("#matricula").val();
         nom=$("#nombre").val();
@@ -43,33 +43,46 @@ $(document).ready(function(){
         tip=$("#tipo").val();
         niv=$("#nivel").val();
         pass=$("#pass").val();
+        obj={
+            accion: "insertar_usuarios",
+            mac: mac,
+            nom: nom,
+            pat: pat,
+            mat: mat,
+            lista: lista,
+            cor: cor,
+            tel: tel,
+            tip: tip,
+            pass,
+            niv: niv
+        }
+
+        if($(this).data("edicion")==1){
+            obj["accion"]="editar_usuarios";
+            obj["id"]=$(this).data("id");
+          $(this).removeData("edicion").removeData("id");
+        }
+        
+        if(mac=="" || nom=="" || pat=="" || lista==0 || mat=="" || cor=="" || tel=="" || niv=="" || pass==""){
+            alert("No dejes campos vacios");
+        }else{
+            $.ajax({
+                url: "./includes/_funciones.php",
+                type: "POST",
+                dataType: "json",
+                data: obj,
+                success: function(data){
+                    console.log(data);
+                }
+            })
+            $("#modalusuario").modal("hide");
+            location.reload();
+        }
         //console.log("matricula", mac)
-        $.ajax({
-            url: "./includes/_funciones.php",
-            type: "POST",
-            dataType: "json",
-            data: {
-                accion: "insertar_usuarios",
-                mac: mac,
-                nom: nom,
-                pat: pat,
-                mat: mat,
-                lista: lista,
-                cor: cor,
-                tel: tel,
-                tip: tip,
-                pass,
-                niv: niv
-            },
-            success: function(data){
-                console.log(data);
-            }
-        })
-        $("#modalusuario").modal("hide");
-        location.reload();
+        
     });
 
-
+    
     //Obtener los parametros
     /*$("#formulario").submit(function(){
         console.log("en formulario")
@@ -108,7 +121,7 @@ $(document).ready(function(){
     });*/
 
     //eliminar
-    $(document).on("click", ".eliminar_usuarios", function(){
+    $(".eliminar_usuarios").click(function(){
         id=$(this).data("id");
         $.ajax({
             url: "./includes/_funciones.php",
@@ -126,8 +139,9 @@ $(document).ready(function(){
     });
 
     //Editar
-    $(document).on("click", ".editar_usuarios", function(){
+    $(".editar_usuarios").click(function(){
         id=$(this).data("id");
+        
         
         obj={
             "accion" : "consultar_usuarios",
@@ -151,10 +165,39 @@ $(document).ready(function(){
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white");
         $(".modal-title").text("Editar Usuarios"); 
-        $("#btnGuardar").text("Actualizar");  
+        $("#btnGuardar").text("Actualizar").data("edicion", 1).data("id", id);  
+
         $("#modalusuario").modal("show");  
 
         
     });
+    function mostrar_usuarios(){
+        let obj = {
+          "accion" : "mostrar_usuarios"
+        }
+        
+        $.post("./includes/_funciones.php",obj, function(data){
+          template = ``; 
+          $.each(data, function(e,elem){
+            template += `
+            <tr>
+            <td>${elem.usr_id}</td>
+            <td>${elem.usr_nombre.concat( " ", elem.usr_appat, " ", elem.usr_apmat)}</td>
+            <td>${elem.usr_email}</td>
+            <td>${elem.usr_tel}</td>
+            <td>${elem.cps_campus}</td>
+            <td>${elem.tyu_nombre}</td>
+            <td>
+                <a href="#" class="editar_usuarios" data-id="${elem.usr_id}"><i class="fas fa-edit"></i></a>
+            </td>
+            <td>
+                <a href="#" class="eliminar_usuarios" data-id="${elem.usr_id}"><i class="fas fa-trash"></i></a>
+            </td>            
+            </tr>
+            `;
+          });
+          $("#tablausuario tbody").html(template);
+        },"JSON");      
+      }
     
 });

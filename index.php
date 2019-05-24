@@ -16,7 +16,8 @@ require_once 'includes/_funciones.php';
     <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'> 
     <link rel="stylesheet" type="text/css" href="lib/datatables/datatables.min.css"/>
-    <link rel="stylesheet"  type="text/css" href="lib/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">       
+    <link rel="stylesheet"  type="text/css" href="lib/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">      
+    
   </head>
     
   <body> 
@@ -42,8 +43,7 @@ require_once 'includes/_funciones.php';
                         <thead class="text-center">
                             <tr>
                                 <th>Id</th>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
+                                <th>Nombre completo</th>
                                 <th>Email</th>
                                 <th>Telefono</th>
                                 <th>Campus</th>
@@ -74,8 +74,7 @@ require_once 'includes/_funciones.php';
                             ?>
                                     <tr>
                                         <td><?php echo $usr["usr_id"]; ?></td>
-                                        <td><?php echo $usr["usr_nombre"]; ?></td>
-                                        <td><?php echo $usr["usr_appat"]." ".$usr["usr_apmat"]; ?></td>
+                                        <td><?php echo $usr["usr_nombre"]." ".$usr["usr_appat"]." ".$usr["usr_apmat"]; ?></td>
                                         <td><?php echo $usr["usr_email"]; ?></td>
                                         <td><?php echo $usr["usr_tel"]; ?></td>
                                         <td><?php echo $usr["cps_campus"]; ?></td>
@@ -136,7 +135,7 @@ require_once 'includes/_funciones.php';
                    </select>
                 </div>  
                 <div class="form-group">
-                <input type="email" class="form-control" id="correo" placeholder="Email">
+                <input type="email" class="form-control" name="correo" id="correo" placeholder="Email">
                 </div>  
                 <div class="form-group">
                 <input type="password" class="form-control" id="pass" placeholder="Contraseña">
@@ -178,6 +177,7 @@ require_once 'includes/_funciones.php';
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="lib/datatables/datatables.min.js"></script>    
     <script type="text/javascript" src="js/main.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script> 
     
     
   </body>

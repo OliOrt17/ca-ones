@@ -12,6 +12,13 @@
             case 'eliminar_usuarios':
                 eliminar_usuarios($_POST["id"]);
             break;
+            case 'editar_usuarios':
+                editar_usuarios();
+            break;
+            case 'mostrar_usuarios':
+                mostrar_usuarios();
+            break;
+
         }
             
     }
@@ -55,5 +62,33 @@
             echo "registro eliminado";
         }
     }
+
+    function editar_usuarios(){
+        global $db;
+        extract($_POST);
+         $editar=$db ->update("usuarios",["usr_id" => $mac,
+                                        "usr_nombre"=>$nom,
+                                        "usr_appat"=>$pat,
+                                        "usr_apmat"=>$mat,
+                                        "usr_email"=>$cor,
+                                        "usr_tel"=>$tel,
+                                        "usr_password"=>$pass,
+                                        "usr_nivel"=>$niv,
+                                        "cps_id"=>$lista,
+                                        "tyu_id"=>$tip,
+                                        ],["usr_id"=>$id]);
+        if($editar){
+            echo "Ediccion completada";
+        }else{
+            echo "Se ocasiono un error";
+        } 
+    }
+
+    function mostrar_usuarios(){
+        global $db;
+        $consultar=$db->select("usuarios","*",["usr_status" =>1]);
+        echo json_encode($consultar);
+    }
+
 ?>
 
