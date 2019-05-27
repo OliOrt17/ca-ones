@@ -86,9 +86,25 @@
 
     function mostrar_usuarios(){
         global $db;
-        $consultar=$db->select("usuarios","*",["usr_status" =>1]);
+        $consultar=$db->elect("usuarios",
+        [
+            "[>]campus"=>"cps_id",
+            "[>]tipo_usuarios"=>"tyu_id"
+        ],
+        [
+            "usuarios.usr_id",
+            "usuarios.usr_nombre",
+            "usuarios.usr_appat",
+            "usuarios.usr_apmat",
+            "usuarios.usr_email",
+            "usuarios.usr_tel",
+            "usuarios.usr_status",
+            "campus.cps_campus",
+            "tipo_usuarios.tyu_nombre"                                      
+        ]); 
         echo json_encode($consultar);
     }
+    
 
 ?>
 

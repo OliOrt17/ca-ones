@@ -70,7 +70,7 @@ require_once 'includes/_funciones.php';
                                     "campus.cps_campus",
                                     "tipo_usuarios.tyu_nombre"                                      
                                 ]); 
-                                foreach ($usuarios as $usuarios => $usr) {
+                                foreach ($usuarios as $us => $usr) {
                             ?>
                                     <tr>
                                         <td><?php echo $usr["usr_id"]; ?></td>

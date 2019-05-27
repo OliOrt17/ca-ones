@@ -76,7 +76,7 @@ $(document).ready(function(){
                 }
             })
             $("#modalusuario").modal("hide");
-            location.reload();
+            mostrar_usuarios();
         }
         //console.log("matricula", mac)
         
@@ -135,7 +135,7 @@ $(document).ready(function(){
                 console.log(data);
             }
         })
-        location.reload();
+        mostrar_usuarios();
     });
 
     //Editar
