@@ -54,7 +54,7 @@ require_once 'includes/_funciones.php';
                         </thead>
                         <tbody class="text-center">
                             <?php 
-                                $usuarios = $db->select("usuarios",
+                               /* $usuarios = $db->select("usuarios",
                                 [
                                     "[>]campus"=>"cps_id",
                                     "[>]tipo_usuarios"=>"tyu_id"
@@ -88,6 +88,7 @@ require_once 'includes/_funciones.php';
                                     </tr>
                             <?php
                                 }
+                                */
                             ?>
 
                         </tbody>

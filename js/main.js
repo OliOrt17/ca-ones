@@ -1,7 +1,27 @@
 $(document).ready(function(){
     //inicializar el plugin de datatable
-    tablausuario=$("#tablausuario").DataTable({
+    $("#tablausuario").DataTable({
        
+       "ajax" :{
+            "url": "./includes/mostrarusuarios.php",
+            "method": "POST"
+
+        },
+        "column":[
+            {
+                "data": "usr_id"
+            },
+            {
+                "data": "usr_nombre"
+            },
+            {
+                "data": "usr_appat"
+            },
+            {
+                "data": "usr_apmat"
+            }
+        ],
+
         
         //Para cambiar el lenguaje a español
         "language": {
@@ -76,7 +96,7 @@ $(document).ready(function(){
                 }
             })
             $("#modalusuario").modal("hide");
-            mostrar_usuarios();
+           // mostrar_usuarios();
         }
         //console.log("matricula", mac)
         
@@ -135,7 +155,7 @@ $(document).ready(function(){
                 console.log(data);
             }
         })
-        mostrar_usuarios();
+       // mostrar_usuarios();
     });
 
     //Editar

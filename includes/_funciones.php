@@ -86,7 +86,7 @@
 
     function mostrar_usuarios(){
         global $db;
-        $consultar=$db->elect("usuarios",
+        $consultar=$db->select("usuarios",
         [
             "[>]campus"=>"cps_id",
             "[>]tipo_usuarios"=>"tyu_id"
