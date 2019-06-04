@@ -36,7 +36,8 @@
                                             "usr_password"=>$pass,
                                             "usr_nivel"=>$niv,
                                             "cps_id"=>$lista,
-                                            "tyu_id"=>$tip,
+                                            "rol_Id"=>$tip,
+                                            "usr_fechA"=>date("Y").date("m").date("d"),
                                             "usr_status"=>1
                                             ]);
         if($insertar){
@@ -75,7 +76,7 @@
                                         "usr_password"=>$pass,
                                         "usr_nivel"=>$niv,
                                         "cps_id"=>$lista,
-                                        "tyu_id"=>$tip,
+                                        "rol_Id"=>$tip,
                                         ],["usr_id"=>$id]);
         if($editar){
             echo "Ediccion completada";
@@ -88,8 +89,8 @@
         global $db;
         $consultar=$db->select("usuarios",
         [
-            "[>]campus"=>"cps_id",
-            "[>]tipo_usuarios"=>"tyu_id"
+            "[>]Campus"=>"cps_id",
+            "[>]Roles"=>"rol_Id"
         ],
         [
             "usuarios.usr_id",
@@ -99,8 +100,12 @@
             "usuarios.usr_email",
             "usuarios.usr_tel",
             "usuarios.usr_status",
-            "campus.cps_campus",
-            "tipo_usuarios.tyu_nombre"                                      
+            "usuarios.usr_password",
+            "Campus.cps_id",
+            "Campus.cps_nombre",
+            "Roles.rol_Id",
+            "Roles.rol_Nombre"                                      
+        ],["usr_status"=>1,"ORDER" => [ "usr_fechA" => "ASC" ]
         ]); 
         echo json_encode($consultar);
     }
