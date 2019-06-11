@@ -110,17 +110,18 @@ buttonRegistrar.click(function(){
         }
         if(mac=="" || nom=="" || appat=="" || lis==0 || apmat=="" || cor=="" || tel=="" || niv==""){
           alert("No dejes campos vacios");
+        }
         if (!validateEmail(cor)) {
             alert("El campo de Correo es erróneo");
             return false;
-           }else{
-                $.ajax({
-                    url: "../includes/_funciones.php",
-                    type: "POST",
-                    dataType: "json",
-                    data: obj
-                 })
-            alert("Registro completado correctmante (Espere a que el Asesor de Sistemas active su cuenta)");
-          
-           }
+        }else{
+          $.ajax({
+            url: "../includes/_funciones.php",
+            type: "POST",
+            dataType: "json",
+            data: obj
+          })
+          alert("Registro completado correctmante (Espere a que el Asesor de Sistemas active su cuenta");
+          location.reload();
+        }
     });
