@@ -64,7 +64,20 @@
                       <option value="1">Activo</option>
                       <option value="0">Inactivo</option>
                    </select>
-            </div>                                                             
+            </div> 
+            <div class="col-md-8">
+            <label for="modulos" class="col-form-label">Modulos:</label><br>
+            <?php 
+               
+                            $modulos = $db->select("modulos","*"); 
+                            foreach ($modulos as $modulos => $mod) {
+                        ?>
+                            <label><?php echo $mod["mod_nom"]?> <input type="checkbox" id="modulos" class="get_value" value="<?php echo $mod["mod_id"]?> "></label>
+                            <?php
+                            }
+                            
+                        ?>
+                </div>                                                               
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

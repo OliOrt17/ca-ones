@@ -3,8 +3,10 @@ function validateEmail(email) {
   return re.test(email);
 }
 let buttonSubmit = $("#buttonSubmit");
+let buttonRegistrar = $("#btnRegistrar");
 
 buttonSubmit.click(function () {
+  
   buttonSubmit.attr("hidden", "true");
   let informationAlert = $("#informationAlert");
   let usuario = $("#inputEmail").val();
@@ -29,8 +31,6 @@ buttonSubmit.click(function () {
     "password": password
   };
   console.log("Aqui se ejecuta la validacion");
-
-
   $.ajax({
       data: usr_data,
       type: "POST",
@@ -80,3 +80,47 @@ buttonSubmit.click(function () {
   // Mostrar mensaje de error
   // Redireccionar a usuarios.php
 });
+
+
+buttonRegistrar.click(function(){
+        console.log("Registrando");
+       ///console.log($(this).data("edicion"));
+        ///e.preventDefault();
+        let nom=$("#name").val();
+        let mac=$("#mac").val();
+        let appat=$("#lastname").val();
+        let apmat=$("#lastnameM").val();
+        let cor=$("#email").val();
+        let tel=$("#phone").val();
+        let lis=$("#lista").val();
+        let tip=$("#tipo").val();
+        let niv=$("#nivel").val();
+       
+        let obj={
+            accion: "registrar_usuarios",
+            nom: nom,
+            mac: mac,
+            appat: appat,
+            apmat: apmat,
+            tel: tel,
+            cor: cor,
+            lis: lis,
+            tip: tip,
+            niv: niv
+        }
+        if(mac=="" || nom=="" || appat=="" || lis==0 || apmat=="" || cor=="" || tel=="" || niv==""){
+          alert("No dejes campos vacios");
+        if (!validateEmail(cor)) {
+            alert("El campo de Correo es erróneo");
+            return false;
+           }else{
+                $.ajax({
+                    url: "../includes/_funciones.php",
+                    type: "POST",
+                    dataType: "json",
+                    data: obj
+                 })
+            alert("Registro completado correctmante (Espere a que el Asesor de Sistemas active su cuenta)");
+          
+           }
+    });

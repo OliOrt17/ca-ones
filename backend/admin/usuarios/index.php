@@ -20,7 +20,7 @@
                         <table id="tablausuario" class="table table-striped table-bordered table-condensed" style="width:100%">
                         <thead class="text-center">
                             <tr>
-                                <th>Id</th>
+                                <th>Matricula</th>
                                 <th>Nombre completo</th>
                                 <th>Email</th>
                                 <th>Telefono</th>
@@ -98,8 +98,18 @@
                    </select>
                 </div>  
                 <div class="form-group">
-                <input type="text" class="form-control" id="nivel" placeholder="Nivel educativo">
-                </div>  
+                   <select id="nivel">
+                   <option value="0">Seleccionar Nivel educativo</option>
+                    <?php 
+                            $nivel = $db->select("Niveles","*"); 
+                            foreach ($nivel as $nivel => $niv) {
+                        ?>
+                                <option value="<?php echo $niv["niv_Id"]?>"><?php echo $niv["niv_Nombre"]?></option>
+                        <?php
+                            }
+                        ?>
+                   </select>
+                </div>   
                 
 
             </div>

@@ -48,7 +48,7 @@ $("#btnGuardar").click(function(){
         cor: cor,
         tel: tel,
         tip: tip,
-        pass,
+        pass: pass,
         niv: niv
     }
 
@@ -102,7 +102,7 @@ $(document).on("click",".editar_usuarios",function(){
         $("#correo").val(data.usr_email);
         $("#tel").val(data.usr_tel);
         $("#tipo").val(data.rol_Id);
-        $("#nivel").val(data.usr_nivel);
+        $("#nivel").val(data.niv_Id);
         $("#pass").val(data.usr_password);
         
     }, "JSON");

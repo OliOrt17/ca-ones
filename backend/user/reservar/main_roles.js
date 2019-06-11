@@ -33,26 +33,16 @@ $(document).ready(function(){
         $("#modalroles").modal("show");   
     });
     //Obtener los parametros
-    $("#btnGuardarRol").click(function(){   
-        
-        var mod = [];  
-        $('.get_value').each(function(){  
-            if($(this).is(":checked")) {  
-                mod.push($(this).val());  
-            }  
-        });  
-        var mod=mod.join(" / ");
-        alert(mod);
+    $("#btnGuardarRol").click(function(){              
         nom=$("#nombre").val();
         desc=$("#descripcion").val();        
         est=$("#lista").val();
-        
+            
         obj={
                 accion: "insertar_rol",                
                 nom: nom,
                 desc: desc,
-                est: est,
-                mod: mod                
+                est: est                
             }            
      if($(this).data("edicion")==1){
          obj["accion"]="editar_rol";
@@ -74,7 +64,7 @@ $(document).ready(function(){
                 }
             })
             $("#modalroles").modal("hide");
-            //location.reload();
+            location.reload();
         }
     });
     
@@ -97,7 +87,7 @@ $(document).ready(function(){
                 
             }
         })
-        //location.reload();
+        location.reload();
     });
 
     //Editar
@@ -116,9 +106,7 @@ $(document).ready(function(){
         $.post("../../includes/funciones_roles_niveles.php", obj, function(data){       
             $("#nombre").val(data.rol_Nombre);
             $("#descripcion").val(data.rol_Descripcion);            
-            $("#lista").val(data.rol_Estatus);     
-            $("#modulos").val(data.rol_modulos.split(" / "));  
-
+            $("#lista").val(data.rol_Estatus);                    
         }, "JSON");
         
        

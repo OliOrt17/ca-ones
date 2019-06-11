@@ -163,9 +163,12 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0||$_SESSION['TYPE'] !=3){
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=1" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=1" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
                         
-                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=2" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Mi Perfil</span></a></li>
+                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=2" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Mi Perfil</span></a></li> -->
+                         
+                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=1" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Reservaciones</span></a></li> 
+                         
                         <!--<li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="./?mod=2" aria-expanded="false"><i class="fas fa-user-astronaut"></i><span class="hide-menu">Mi perfil</span></a></li>-->
                     </ul>
                 </nav>
@@ -183,12 +186,15 @@ if(!isset($_COOKIE['lau'])|| $_COOKIE['lau']==0||$_SESSION['TYPE'] !=3){
             
         <?php
             switch ($_GET["mod"]){
-                case 1:
+               case 1:
+                    include ("./reservar/index.php");
+                break;
+                /* case 1:
                     include ("./dashboard/index.php");
                 break;
                 case 2:
                     include ("./profile/index.php");
-                break;
+                break;*/
                 
                 default:
                     header("Location: ../auth/404.php"); 
