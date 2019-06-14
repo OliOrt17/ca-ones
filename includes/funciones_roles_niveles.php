@@ -63,7 +63,15 @@
     function consultar_rol($id){
         global $db;
          $consultar = $db -> get("Roles","*",["AND" => [ "rol_Id"=>$id]]);
-        echo json_encode($consultar);
+         $modulo=[];
+         $modulo["Id"]=$consultar["rol_Id"];
+         $modulo["Nombre"]=$consultar["rol_Nombre"];
+         $modulo["Estatus"]=$consultar["rol_Estatus"];
+         $modulo["Descripcion"]=$consultar["rol_Descripcion"];
+         $modulo["Fecha"]=$consultar["rol_FechaAlta"];
+         $modulo["Modulos"]=explode(" / ",$consultar["rol_modulos"]);
+
+        echo json_encode($modulo);
 
     }
 

@@ -42,7 +42,7 @@ $(document).ready(function(){
             }  
         });  
         var mod=mod.join(" / ");
-        alert(mod);
+    
         nom=$("#nombre").val();
         desc=$("#descripcion").val();        
         est=$("#lista").val();
@@ -74,7 +74,7 @@ $(document).ready(function(){
                 }
             })
             $("#modalroles").modal("hide");
-            //location.reload();
+            location.reload();
         }
     });
     
@@ -97,7 +97,7 @@ $(document).ready(function(){
                 
             }
         })
-        //location.reload();
+        location.reload();
     });
 
     //Editar
@@ -114,11 +114,19 @@ $(document).ready(function(){
             "id" : $(this).data("id")
         }
         $.post("../../includes/funciones_roles_niveles.php", obj, function(data){       
-            $("#nombre").val(data.rol_Nombre);
-            $("#descripcion").val(data.rol_Descripcion);            
-            $("#lista").val(data.rol_Estatus);     
-            $("#modulos").val(data.rol_modulos.split(" / "));  
-
+            $("#nombre").val(data.Nombre);
+            $("#descripcion").val(data.Descripcion);            
+            $("#lista").val(data.Estatus);     
+            $("#formulario").find(".get_value").each(function(i, e){
+                let valor = $(this).val();
+                let $this = $(this);
+                $.each(data.Modulos, function(item, i){
+                    console.log(item,i);
+                    if(valor == i){
+                        $this.prop("checked", true);
+                    }
+                });
+            });
         }, "JSON");
         
        
